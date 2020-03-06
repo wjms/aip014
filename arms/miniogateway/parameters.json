@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_accname_aip_minio_name": {
+            "value": null
+        },
+        "serverfarms_accname_aip_app_plan_name": {
+            "value": null
+        },
+        "storageAccounts_accnameaipstorage_name": {
+            "value": null
+        }
+    }
+}
