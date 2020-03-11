@@ -1,0 +1,76 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "containerGroups_acctest_name": {
+            "defaultValue": "acctest",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.ContainerInstance/containerGroups",
+            "apiVersion": "2018-04-01",
+            "name": "[parameters('containerGroups_acctest_name')]",
+            "location": "chinaeast2",
+            "properties": {
+                "containers": [
+                    {
+                        "name": "[parameters('containerGroups_acctest_name')]",
+                        "properties": {
+                            "image": "minio/minio:latest",
+                            "command": [
+                                "/bin/sh",
+                                "-c",
+                                "mino gateway azure"
+                            ],
+                            "ports": [
+                                {
+                                    "protocol": "TCP",
+                                    "port": 9000
+                                }
+                            ],
+                            "environmentVariables": [
+                                {
+                                    "name": "MINIO_ACCESS_KEY",
+                                    "value": "accnameaipstorage"
+                                },
+                                {
+                                    "name": "MINIO_SECRET_KEY",
+                                    "value": "+MEiBUUdITVeZTWPn3O9rRwju1gipgPdKGLsUyiR2WpDbuNgrWulSXzNehWWkA5OYodr8ZPM3slvWrOoUKznYg=="
+                                },
+                                {
+                                    "name": "PORT",
+                                    "value": "9000"
+                                },
+                                {
+                                    "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+                                    "value": "false"
+                                }
+                            ],
+                            "resources": {
+                                "requests": {
+                                    "memoryInGB": 3.5,
+                                    "cpu": 2
+                                }
+                            }
+                        }
+                    }
+                ],
+                "restartPolicy": "OnFailure",
+                "ipAddress": {
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 9000
+                        }
+                    ],
+                    "type": "Public",
+                    "dnsNameLabel": "[parameters('containerGroups_acctest_name')]"
+                },
+                "osType": "Linux"
+            }
+        }
+    ]
+}
