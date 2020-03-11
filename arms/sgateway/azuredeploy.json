@@ -23,7 +23,7 @@
                             "command": [
                                 "/bin/sh",
                                 "-c",
-                                "mino gateway azure"
+                                "minio gateway azure"
                             ],
                             "ports": [
                                 {
