@@ -21,7 +21,6 @@
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
             "name": "[parameters('storageAccounts_accnameaipstorage_name')]",
-            "location": "eastasia",
             "sku": {
                 "name": "Standard_LRS",
                 "tier": "Standard"
@@ -55,7 +54,6 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2018-02-01",
             "name": "[parameters('serverfarms_accname_aip_app_plan_name')]",
-            "location": "East Asia",
             "sku": {
                 "name": "B1",
                 "tier": "Basic",
@@ -99,7 +97,6 @@
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-11-01",
             "name": "[parameters('sites_accname_aip_minio_name')]",
-            "location": "East Asia",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_accname_aip_app_plan_name'))]"
             ],
@@ -136,7 +133,6 @@
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2018-11-01",
             "name": "[concat(parameters('sites_accname_aip_minio_name'), '/web')]",
-            "location": "East Asia",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_accname_aip_minio_name'))]"
             ],
@@ -210,7 +206,6 @@
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2018-11-01",
             "name": "[concat(parameters('sites_accname_aip_minio_name'), '/', parameters('sites_accname_aip_minio_name'), '.azurewebsites.net')]",
-            "location": "East Asia",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_accname_aip_minio_name'))]"
             ],
