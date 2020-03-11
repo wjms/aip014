@@ -1,9 +1,9 @@
 {
     "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
     "type": "QuickStart",
-    "itemDisplayName": "miniogateway",
-    "description": "Deploy a managed cluster with miniogateway",
-    "summary": "Deploy a managed cluster with miniogateway",
+    "itemDisplayName": "Azure Blob Storage",
+    "description": "Deploy an instance of azure storage",
+    "summary": "Deploy an instance of azure storage",
     "githubUsername": "mswj",
     "dateUpdated": "2020-03-06"
 }

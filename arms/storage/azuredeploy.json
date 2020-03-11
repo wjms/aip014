@@ -2,8 +2,8 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "storageAccounts_acctest_name": {
-            "defaultValue": "acctest",
+        "storageAccounts_host_name": {
+            "defaultValue": "host",
             "type": "String"
         }
     },
@@ -12,7 +12,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-04-01",
-            "name": "[parameters('storageAccounts_acctest_name')]",
+            "name": "[parameters('storageAccounts_host_name')]",
             "location": "chinaeast2",
             "sku": {
                 "name": "Standard_LRS",
@@ -38,15 +38,15 @@
                     },
                     "keySource": "Microsoft.Storage"
                 },
-                "accessTier": "Hot"
+                "accessTier": "Cool"
             }
         },
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices",
             "apiVersion": "2019-04-01",
-            "name": "[concat(parameters('storageAccounts_acctest_name'), '/default')]",
+            "name": "[concat(parameters('storageAccounts_host_name'), '/default')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_acctest_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_host_name'))]"
             ],
             "sku": {
                 "name": "Standard_LRS"
