@@ -2,16 +2,8 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "containerGroups_gateway_name": {
-            "defaultValue": "host",
-            "type": "String"
-        },
-        "containerGroups_storage_name": {
-            "defaultValue": "host",
-            "type": "String"
-        },
-        "containerGroups_storage_key": {
-            "defaultValue": "key",
+        "containerGroups_acctest_name": {
+            "defaultValue": "acctest",
             "type": "String"
         }
     },
@@ -20,18 +12,18 @@
         {
             "type": "Microsoft.ContainerInstance/containerGroups",
             "apiVersion": "2018-04-01",
-            "name": "[parameters('containerGroups_gateway_name')]",
+            "name": "[parameters('containerGroups_acctest_name')]",
             "location": "chinaeast2",
             "properties": {
                 "containers": [
                     {
-                        "name": "[parameters('containerGroups_gateway_name')]",
+                        "name": "[parameters('containerGroups_acctest_name')]",
                         "properties": {
                             "image": "minio/minio:latest",
                             "command": [
                                 "/bin/sh",
                                 "-c",
-                                "minio gateway azure"
+                                "mino gateway azure"
                             ],
                             "ports": [
                                 {
@@ -42,11 +34,11 @@
                             "environmentVariables": [
                                 {
                                     "name": "MINIO_ACCESS_KEY",
-                                    "value": "[parameters('containerGroups_storage_name')]"
+                                    "value": "accnameaipstorage"
                                 },
                                 {
                                     "name": "MINIO_SECRET_KEY",
-                                    "value": "[parameters('containerGroups_storage_key')]"
+                                    "value": "+MEiBUUdITVeZTWPn3O9rRwju1gipgPdKGLsUyiR2WpDbuNgrWulSXzNehWWkA5OYodr8ZPM3slvWrOoUKznYg=="
                                 },
                                 {
                                     "name": "PORT",
@@ -75,7 +67,7 @@
                         }
                     ],
                     "type": "Public",
-                    "dnsNameLabel": "[parameters('containerGroups_gateway_name')]"
+                    "dnsNameLabel": "[parameters('containerGroups_acctest_name')]"
                 },
                 "osType": "Linux"
             }
